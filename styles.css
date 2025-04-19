@@ -36,12 +36,12 @@ body {
 #page3 {
   height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, #25606d, #22b5da);
+  background:white;
 }
 #page4 {
   height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, #25606d, #22b5da);
+  background: white;
 }
 
 #landing {
@@ -240,7 +240,7 @@ page2 content #tag5 {
   height: inherit;
   background-color: #fff;
   width: inherit;
-  background: linear-gradient(135deg, #197b94, #36a3bc);
+  background: white;
 }
 page3 content #box1 {
   height: 85%;
