@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR Projects</title>
+
+    <!-- 1) Load jQuery before Tilt.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        overflow-y: auto; /* allow vertical scrolling */
+        font-family: "Arial", sans-serif;
+        background: #0a0a0a;
+        color: #fff;
+      }
+
+      .page {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      #ar-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        z-index: 2;
+      }
+
+      .ar-title {
+        font-size: 4rem;
+        background: linear-gradient(45deg, #00f3ff, #8a2be2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+        animation: titleFloat 3s ease-in-out infinite;
+      }
+
+      .ar-description {
+        font-size: 1.2rem;
+        max-width: 600px;
+        opacity: 0.9;
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      .ar-card-container {
+        perspective: 1500px;
+        position: relative;
+      }
+
+      .ar-card {
+        width: 300px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .ar-card::before {
+        content: "";
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        background: linear-gradient(
+          45deg,
+          rgba(138, 43, 226, 0.2) 0%,
+          rgba(0, 243, 255, 0.2) 100%
+        );
+        transform: rotate(45deg);
+        pointer-events: none;
+      }
+
+      .ar-card-content {
+        position: relative;
+        z-index: 2;
+        padding: 2rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @keyframes titleFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 0.9;
+          transform: translateY(0);
+        }
+      }
+
+      /* Advanced 3D hover effects */
+      .ar-card:hover {
+        transform: translateZ(20px);
+        box-shadow: 0 25px 40px rgba(0, 243, 255, 0.2);
+      }
+
+      .ar-card:hover::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent 20%,
+          rgba(255, 255, 255, 0.1) 50%,
+          transparent 80%
+        );
+        animation: shine 1.5s;
+      }
+
+      @keyframes shine {
+        from {
+          transform: rotate(0deg) translateX(-50%);
+        }
+        to {
+          transform: rotate(360deg) translateX(-50%);
+        }
+      }
+
+      /* Back button styling */
+      #back-btn {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #060505;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        backdrop-filter: blur(5px);
+        transition: background 0.2s;
+        z-index: 5;
+      }
+      #back-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- PAGE 1 -->
+    <section class="page" id="page-1">
+      <button id="back-btn">Back</button>
+      <div id="ar-header">
+        <h1 class="ar-title">Augmented Reality</h1>
+        <p class="ar-description">
+          Bridging physical and digital worlds through AR innovation. Explore
+          projects that transform reality with interactive 3D experiences.
+        </p>
+      </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="page" id="page-2">
+      <div class="ar-card-container">
+        <div class="ar-card">
+          <div class="ar-card-content">
+            <h2>AR Project 01</h2>
+            <p>Hover to interact</p>
+            <div id="3D" class="ar-model-preview"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sound effect -->
+    <audio
+      id="card-sound"
+      src="data/static-noise-mechanical-whoosh-15-c-191015.mp3"
+      preload="auto"
+    ></audio>
+
+    <script>
+      // Init Tilt.js (now that jQuery is loaded)
+      $(".ar-card").tilt({
+        glare: true,
+        maxGlare: 0.2,
+        maxTilt: 15,
+        scale: 1.05,
+        perspective: 1500,
+      });
+
+      // Hover sound
+      const card = document.querySelector(".ar-card");
+      const cardSound = document.getElementById("card-sound");
+      card.addEventListener("mouseenter", () => {
+        cardSound.currentTime = 0;
+        cardSound.play();
+      });
+
+      // Back button scroll to top (Page 1)
+      document.getElementById("back-btn").addEventListener("click", () => {
+        window.location.href = "home.html";
+      });
+
+      // (Optional) Basic WebXR placeholder
+      if (!("xr" in navigator)) {
+        console.log("WebXR not supported - using polyfill");
+        const webxrPolyfill = document.createElement("script");
+        webxrPolyfill.src =
+          "https://cdn.jsdelivr.net/npm/webxr-polyfill@latest/build/webxr-polyfill.js";
+        document.head.appendChild(webxrPolyfill);
+      }
+      async function initXR() {
+        if (navigator.xr) {
+          const xrSession = await navigator.xr.requestSession("immersive-ar");
+          // setup your AR scene here…
+        }
+      }
+    </script>
+  </body>
+</html>

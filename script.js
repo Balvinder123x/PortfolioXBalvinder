@@ -59,5 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-  
+document.getElementById("farmer_box2").addEventListener("click", function () {
+  window.open(
+    "https://www.figma.com/proto/nSuYaniCtOwzSrXOK8K54r/FARM-GENIE?node-id=210-2&p=f&t=2FNNvaoCn0K2qaHq-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=210%3A2"
+  );
+});
+document.getElementById("box2").addEventListener("click", function () {
+  window.open("ar.html", "_self");
+});
+document.getElementById("box1").addEventListener("click", function () {
+  window.open("getPoster.html", "_self");
+});
+document.getElementById("boxt").addEventListener("click", function () {
+  window.open("tiptrack.html", "_self");
+});
