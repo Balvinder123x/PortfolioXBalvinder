@@ -26,7 +26,8 @@ body {
 #page1 {
   height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, #25606d, #22b5da);
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(10px); /* Blur effect for content area */
 }
 #page2 {
   height: 100%;
@@ -101,7 +102,7 @@ body {
 
 #navbar {
   /* background: linear-gradient(135deg, #144550, #4dc7e5); */
-  padding: 10px 20px;
+  padding: 0 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -111,7 +112,7 @@ body {
   list-style: none;
   display: flex;
   justify-content: center;
-  margin-left: 830px;
+  margin-left: 740px;
 }
 
 #navbar ul li {
@@ -119,36 +120,36 @@ body {
 }
 
 #navbar ul li a {
-  color: #fff;
+  color: #0b0a0a;
   text-decoration: none;
   font-size: 1.1rem;
   transition: color 0.3s;
 }
 
 #navbar ul li a:hover {
-  color: #f0f0f0;
+  color: #403737;
   cursor: url("linkedin.jpg") 106 106, auto;
 }
 #about {
   padding: 60px 20px;
   text-align: center;
-  background: #f9f9f9;
+  background: #0d0d0d;
 }
 #intro {
-  margin-top: 170px;
+  margin-top: 100px;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #f8f9fa;
+  color: #0f1010;
 }
 
 #intro h1 {
   font-size: 3rem;
   line-height: 1.2;
   margin: 0;
-  font-size: 120px;
+  font-size: 110px;
   letter-spacing: -3px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
@@ -163,7 +164,7 @@ body {
 #quates h2 {
   font-size: 3rem;
   line-height: 1.2;
-  color: #f8f9fa;
+  color: #101011;
   font-size: 30px;
   letter-spacing: -1px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -172,13 +173,12 @@ body {
 #page2 content {
   display: flex;
   height: inherit;
-  background-color: #fff;
+  background-color:white;
   width: inherit;
-  background: linear-gradient(135deg, #197b94, #36a3bc);
 }
 page2 content #box1 {
   height: 85%;
-  width: 39%;
+  width: 35%;
   background-color: #f5f5f5;
   border-radius: 70px;
   padding: 10px;
@@ -186,7 +186,7 @@ page2 content #box1 {
 }
 page2 content #box2 {
   height: 85%;
-  width: 70%;
+  width: 65%;
   background-color: #ddeeff;
   border-radius: 70px;
   padding: 10px;
@@ -200,15 +200,22 @@ page2 content #tag1 {
   height: 30%;
 }
 
-page2 content #tag1 h2{
-  font-size: 40px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  margin-left: 270px;
+page2 content #tag1 h2 {
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-left: 13rem;
 }
-page2 content #tag2 h1{
-  font-size: 50px;
-  margin-left: 100px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+page2 content #tag2 h1 {
+  font-size: 40px;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+page2 content #tag4 h1 {
+  font-size: 40px;
+  margin-left: 3rem;
+
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 page2 content #tag2 {
@@ -294,7 +301,7 @@ page3 content #tag5 {
 .box:hover {
   transform: translateY(-20px); /* Move up by 20px */
 }
-.box:hover img{
+.box:hover img {
   transform: translateY(30px);
   transition: transform 0.5s ease;
   position: relative;
@@ -303,25 +310,69 @@ page3 content #tag5 {
   transition: transform 0.3s ease;
   /* small pause before returning */
 }
-#box1_poster{
-  height: 600px;
-  width: 500px;
-  margin-left: 80px;
-  border-radius: 50px;
+#box1_poster {
+  max-width: 100%;
+  height: auto;
+  margin-left: 4rem;
+  border-radius: 2rem;
 }
-#box2_poster{
-  height: 600px;
-  margin-left: 200px;
-  width: 800px;
-  border-radius: 50px;
+#box2_poster {
+  max-width: 100%;
+  height: auto;
+  margin-left: 12rem;
+  border-radius: 2rem;
 }
-page2 content #tag4 h2{
+page2 content #tag4 h2 {
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-left: 33rem;
+  z-index: 100;
+}
+page2 content #tag5 h1 {
   font-size: 40px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  margin-left: 600px;
+  margin-left: 20rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  z-index: 100;
 }
-page2 content #tag5 h1{
-  font-size: 50px;
-  margin-left: 400px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+.color-changing-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90vh;
+  z-index: 0;
+  overflow: hidden;
+}
+/* Update the animated-gradient class */
+.animated-gradient {
+  width: 100%;
+  height: 90%;
+  background: linear-gradient(
+    90deg,
+    /* Changed from 45deg to vertical gradient */ #ff222226,
+    rgba(95, 255, 77, 0.214),
+    rgba(64, 241, 97, 0.339),
+    rgba(255, 211, 153, 0.369),
+    rgba(38, 159, 175, 0.367),
+    rgba(116, 53, 192, 0.421),
+    rgb(248, 246, 246) /* Added duplicate first color for smoother loop */
+  );
+  background-size: 400% 400%; /* Increased from 300% */
+  animation: gradientShift 20s ease infinite; /* Slowed animation */
+  filter: blur(40px); /* Increased blur */
+  opacity: 0.7; /* Added overall opacity */
+}
+
+/* Update keyframes for smoother transition */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

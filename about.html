@@ -8,7 +8,10 @@
   </head>
   <body>
     <page1 id="page1">
-      <content>
+      <div class="color-changing-bg">
+        <div class="animated-gradient"></div>
+      </div>
+      <div id="content">
         <nav id="navbar">
           <ul>
             <li><a href="" id="aboutLink">About Me</a></li>
@@ -23,25 +26,26 @@
           <div id="box1">
             <img id="profile_img" src="data/profile_img.avif" alt="" />
           </div>
-          <div id="box2">
-            <h1>
+          <div id="page1_box2">
+            <h1 id="h1">
               Hi, I’m Balvinder. <br />A passionate designer based in India.<br />
               I create user-friendly digital experiences.
             </h1>
-            <h2>
-              Currently studying Compter Science And Design at IIIT-Delhi.
-              Passionate about solving problems through visual storytelling.
+            <h2 id="h2_1">
+              Currently studying Compter Science And Design at IIIT-Delhi.<br>
+              Passionate about solving problems through visual storytelling.<br>
               Experienced in working on both digital and print design projects.
-              <h2>
-                Skilled in tools like Figma, Canva, Photoshop, and Illustrator.
-                Enjoy collaborating on creative projects and design challenges.
+            </h2>
+            <h2 id="h2_2">
+                Skilled in tools like Figma, Canva, Photoshop, and Illustrator.<br>
+                Enjoy collaborating on creative projects and design challenges.<br>
                 Always eager to learn and improve through real-world experience.
-              </h2>
             </h2>
           </div>
         </div>
-      </content>
+      </div>
     </page1>
+
     <page2 id="page2">
       <content id="page2_content">
         <div id="box1" class="p2_box">box1</div>
@@ -64,5 +68,34 @@
     <page4 id="page4">
       <content> </content>
     </page4>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("page2_content");
+        if (!container) return;
+
+        const boxes = container.querySelectorAll(".p2_box");
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                boxes.forEach((box, i) => {
+                  // apply the slideInLeft animation with a staggered delay
+                  box.style.animation = `slideInLeft_for_slide 0.6s ease-out ${
+                    i * 0.2
+                  }s forwards`;
+                });
+                // unobserve after first trigger
+                obs.unobserve(container);
+              }
+            });
+          },
+          {
+            threshold: 0.3,
+          }
+        );
+
+        observer.observe(container);
+      });
+    </script>
   </body>
 </html>
