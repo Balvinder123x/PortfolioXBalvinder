@@ -73,3 +73,70 @@ document.getElementById("box1").addEventListener("click", function () {
 document.getElementById("boxt").addEventListener("click", function () {
   window.open("tiptrack.html", "_self");
 });
+
+// Add to script.js
+let isDragging = false;
+let startX = 0;
+let currentX = 0;
+const swipeElement = document.querySelector(".swipe-handle");
+const body = document.body;
+
+// Touch events
+swipeElement.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+  isDragging = true;
+});
+
+swipeElement.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+  currentX = e.touches[0].clientX;
+  handleMove(currentX - startX);
+});
+
+swipeElement.addEventListener("touchend", handleEnd);
+
+// Mouse events
+swipeElement.addEventListener("mousedown", (e) => {
+  startX = e.clientX;
+  isDragging = true;
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  currentX = e.clientX;
+  handleMove(currentX - startX);
+});
+
+document.addEventListener("mouseup", handleEnd);
+
+function handleMove(offset) {
+  const maxOffset = 150;
+  const clampedOffset = Math.max(-maxOffset, Math.min(offset, maxOffset));
+  swipeElement.style.transform = `translateX(${clampedOffset}px)`;
+}
+
+function handleEnd() {
+  isDragging = false;
+  const finalOffset =
+    parseInt(
+      swipeElement.style.transform.replace("translateX(", "").replace("px)", "")
+    ) || 0;
+
+  if (Math.abs(finalOffset) > 100) {
+    body.classList.toggle("dark-mode");
+  }
+
+  swipeElement.style.transform = "translateX(0)";
+}
+
+// Add RGB color variable for decorations
+document.documentElement.style.setProperty("--text-color-rgb", "0,0,0");
+document.addEventListener("DOMContentLoaded", () => {
+  const textColor = getComputedStyle(document.documentElement).getPropertyValue(
+    "--text-color"
+  );
+  const rgb = textColor.includes("rgb")
+    ? textColor.match(/\d+/g).slice(0, 3).join(",")
+    : "255,255,255";
+  document.documentElement.style.setProperty("--text-color-rgb", rgb);
+});

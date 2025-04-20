@@ -67,14 +67,14 @@ page2 {
 }
 
 #navbar ul li a {
-  color: #0b0a0a;
+  color: #7d7777;
   text-decoration: none;
   font-size: 1.1rem;
   transition: color 0.3s;
 }
 
 #navbar ul li a:hover {
-  color: #f0f0f0;
+  color: #0f0e0e;
   cursor: url("linkedin.jpg") 106 106, auto;
 }
 #about {
@@ -248,28 +248,28 @@ page3 content h1 {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+
 .color-changing-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   z-index: 0;
   overflow: hidden;
 }
-/* Update the animated-gradient class */
 .animated-gradient {
   width: 100%;
   height: 90%;
   background: linear-gradient(
     90deg,
-    /* Changed from 45deg to vertical gradient */ #ff222226,
-    rgba(255, 169, 77, 0.15),
-    rgba(252, 255, 77, 0.15),
-    rgba(136, 255, 77, 0.15),
-    rgba(77, 234, 255, 0.15),
-    rgba(253, 252, 253, 0.966),
-    rgb(238, 218, 218) /* Added duplicate first color for smoother loop */
+    #ff222226,
+    rgba(95, 255, 77, 0.214),
+    rgba(64, 241, 97, 0.339),
+    rgba(255, 211, 153, 0.369),
+    rgba(38, 159, 175, 0.367),
+    rgba(116, 53, 192, 0.421),
+    rgb(248, 246, 246)
   );
   background-size: 400% 400%; /* Increased from 300% */
   animation: gradientShift 20s ease infinite; /* Slowed animation */
@@ -277,7 +277,6 @@ page3 content h1 {
   opacity: 0.7; /* Added overall opacity */
 }
 
-/* Update keyframes for smoother transition */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -288,4 +287,316 @@ page3 content h1 {
   100% {
     background-position: 0% 50%;
   }
+}
+page3 #box2 {
+  cursor: pointer;
+}
+:root {
+  --page1-bg: #f0f8ff;
+  --page2-bg: #ffffff;
+  --page3-bg: #f9f9f9;
+  --page4-bg: #f9f9f9;
+  --text-color: #000000;
+  --box-bg-1: #f5f5f5;
+  --box-bg-2: #ddeeff;
+  --circle-color:rgba(0, 0, 255, 0.44);
+  --transition-speed: 0.3s;
+}
+
+.dark-mode {
+  --page1-bg: #313030; 
+  --page2-bg: #313030; 
+  --page3-bg: #313030; 
+  --page4-bg: #313030; 
+  --text-color: #ffffff;
+  --box-bg-1: #2d2d2d;
+  --box-bg-2: #1e2a3a;
+  --circle-color:rgba(160, 160, 231, 0.44);
+}
+
+
+#page1 {
+  background-color: var(--page1-bg);
+  transition: background-color var(--transition-speed) ease;
+}
+
+#page2 {
+  background-color: var(--page2-bg);
+  transition: background-color var(--transition-speed) ease;
+}
+
+#page3 {
+  background-color: var(--page3-bg);
+  transition: background-color var(--transition-speed) ease;
+}
+#page4 {
+  background-color: var(--page4-bg);
+  transition: background-color var(--transition-speed) ease;
+}
+
+/* Update existing page content backgrounds */
+#page2 content,
+#page3 content {
+  background-color: transparent !important;
+}
+
+/* Keep existing box styles */
+page2 content #box1,
+page3 content #boxt {
+  background-color: var(--box-bg-1);
+}
+
+page2 content #box2,
+page3 content #farmer_box2 {
+  background-color: var(--box-bg-2);
+}
+#navbar a {
+  color: var(--text-color);
+  transition: color var(--transition-speed) ease;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+}
+#navbar a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+#navbar a:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-speed) ease;
+}
+#page4 {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.page4-content {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.connection-box {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.contact-text {
+  color: var(--text-color);
+  opacity: 0.9;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 2rem 0;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 50%;
+  background: var(--tool-card-bg);
+  transition: all 0.3s ease;
+}
+
+.social-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-color);
+  opacity: 0.8;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  background: var(--text-color);
+}
+
+.social-icon:hover svg {
+  fill: var(--page4-bg);
+  opacity: 1;
+}
+.swipe-container {
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.swipe-element {
+  width: 200px;
+  height: 60px;
+  background-color: var(--box-bg-1);
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+.swipe-handle {
+  width: 50px;
+  height: 50px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  transition: transform var(--transition-speed) ease;
+}
+
+.swipe-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -30px;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
+.end-decoration {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.deco-circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(var(--text-color-rgb), 0.05);
+  right: -150px;
+  bottom: -150px;
+}
+
+.deco-wave {
+  position: absolute;
+  width: 200%;
+  height: 100px;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(var(--text-color-rgb), 0.1),
+    rgba(var(--text-color-rgb), 0.1) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  bottom: 0;
+  left: -50%;
+  opacity: 0.6;
+}
+/* Add to CSS */
+#page3 {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background-color: var(--page3-bg);
+  transition: background-color 0.3s ease;
+}
+
+.page3-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.design-story {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.design-story h1 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--text-color);
+  opacity: 0.8;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.tool-card {
+  background: var(--tool-card-bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.tool-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+  fill: var(--text-color);
+}
+
+.tool-card h3 {
+  color: var(--text-color);
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.tool-card p {
+  color: var(--text-color);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.closing-message {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.closing-message p {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.deco-line {
+  width: 100px;
+  height: 2px;
+  background: var(--text-color);
+  margin: 0 auto;
+  opacity: 0.3;
+}
+:root {
+  --tool-card-bg: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode {
+  --tool-card-bg: rgba(0, 0, 0, 0.1);
 }
